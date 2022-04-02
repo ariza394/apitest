@@ -1,13 +1,11 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import App from './App'
-import { DataProvider } from './context/DataContext';
-import { rest } from 'msw';
-import { server } from './mocks/server';
+import Investigadores from '../investigadores'
 
 describe('investigacion page', () =>{
 
     beforeEach(()=>{
-        render(<App />, {wrapper:DataProvider});
+        render(<Investigadores />);
+
     });
 
     test('render is ok', () =>{    
@@ -30,24 +28,15 @@ describe('investigacion page', () =>{
     })
 });
 
-describe('input render component', () =>{
+describe('cambio en mi historial', () =>{
 
-  beforeEach(()=>{
-    render(<App />, {wrapper:DataProvider});
-  });
+    beforeEach(()=>{
+        render(<Investigadores />);
 
-  test('input', () =>{
-    const titleName = screen.getByText('carlos');
-    expect(titleName).toBeInTheDocument();
+    });
 
-    const inputName = screen.getByRole('textbox',{name:''});
-    fireEvent.change(inputName,{target:{value:'Ariza'}});
-    expect(titleName).toHaveTextContent(/ariza/i);
-  });
-});
+    test('cambio en el input',() =>{
+        
+    });
 
-
-test('call Api', async() =>{
-  render(<App />, {wrapper:DataProvider});
-  const title = await screen.findByText(/a method is provided/i,{exact:false})
 });
