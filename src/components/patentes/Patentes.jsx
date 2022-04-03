@@ -17,10 +17,10 @@ const Patentes = () => {
 
     return ( 
         <PatentesContainer>
-            { patentes.items && patentes?.items.slice(0,1).map(patente => 
+            { patentes && patentes.map(patente => 
                 <Patente 
-                    abstract_en={patente?.abstract_en[0].substring(0,20) || []} 
-                    claims_en={patente?.claims_en || []}
+                    abstract_en={patente.abstract_en} 
+                    claims_en={patente.claims_en}
                 />)
             }
         </PatentesContainer>

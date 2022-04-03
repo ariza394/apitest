@@ -5,7 +5,7 @@ const Patente = ({abstract_en,claims_en}) => {
         <div>
             <h2>{abstract_en}</h2>
             <ul>
-                {claims_en.map(claim => <li>{claim.substring(0,100)}</li>)}
+                {claims_en}
             </ul>
         </div>
      );
