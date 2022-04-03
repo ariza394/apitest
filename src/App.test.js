@@ -46,8 +46,14 @@ describe('input render component', () =>{
   });
 });
 
-
-test('call Api', async() =>{
+test('handle error for scoops and toppings routes', async () =>{
+  server.resetHandlers(
+      rest.get('http://localhost:3030/patentes',(req,res,ctx) => 
+          res(ctx.status(500))
+      )
+  );
   render(<App />, {wrapper:DataProvider});
-  const title = await screen.findByText(/a method is provided/i,{exact:false})
+  const title = await screen.findByText(/a method is provided/i,{exact:false});
 });
+
+
