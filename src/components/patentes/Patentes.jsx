@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import useGetData  from '../../hooks/useGetData';
 import Patente from './patente/Patente';
+import axios from 'axios';
 
 const PatentesContainer = styled.div`
     grid-row: 4 / span 2;
@@ -11,9 +12,16 @@ const PatentesContainer = styled.div`
 
 const Patentes = () => {
 
-    //const [patentes,setPatentes] = useState([]);
+    const [patentes,setDataApi] = useState([]);
 
-    const patentes = useGetData('patentes');
+    useEffect(() =>{
+        getData();
+    },[]);
+
+    const getData = async() =>{
+        const {data} = await axios.get(`http://localhost:3030/patentes`);
+        setDataApi(data);
+    };
 
     return ( 
         <PatentesContainer>

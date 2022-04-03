@@ -54,6 +54,7 @@ test('handle error for scoops and toppings routes', async () =>{
   );
   render(<App />, {wrapper:DataProvider});
   const title = await screen.findByText(/el abstract_en/i,{exact:false});
+  expect(title).toBeInTheDocument();
 });
 
 
